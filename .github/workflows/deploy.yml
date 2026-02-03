@@ -1,0 +1,22 @@
+name: Deploy to Productionn
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    # 👇 This links the job to the environment
+    environment: <h1>production
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy application
+        run: |
+          echo "Deploying to production server..."
+          echo "Server IP is $SERVER_IP"
