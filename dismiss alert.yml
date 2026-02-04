@@ -1,0 +1,22 @@
+name: Try dismiss dependabot
+
+on: workflow_dispatch
+
+permissions:
+  security-events: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Try dismiss alert
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.dependabot.updateAlert({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              alert_number: 1,
+              state: "dismissed",
+              dismissed_reason: "false_positive"
+            })
