@@ -1,0 +1,28 @@
+version: 2
+
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+
+    # Limit PR noise (optional)
+    open-pull-requests-limit: 5
+
+    # Labels for easy filtering
+    labels:
+      - "security"
+      - "dependabot"
+      - "lodash-test"
+
+    # Commit message rule
+    commit-message:
+      prefix: "security"
+
+    # Allow all dependency updates
+    allow:
+      - dependency-type: "all"
+
+    # ❌ DO NOT ignore lodash (important for trigger)
+    # ignore:
+    #   - dependency-name: "lodash"
