@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 
 app.get("/test", (req, res) => {
-  eval(req.query.q);   // 🔥 Guaranteed CodeQL alert<h1>test
+  console.log(req.query.q);   // Log query parameter instead of executing it
   res.send("ok");
 });
 
